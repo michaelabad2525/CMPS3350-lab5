@@ -1,15 +1,27 @@
 #flexContainer {
     display: flex;
-    height: 65%;
+    height: 95%;
 }
 
-.box {
-    border: 3px solid black;
+body {
+    background-image: url("./assets/bodyBack.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: blue;
+    color: white;
+    font-size: 15pt;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 5px black;
+    cursor: pointer; 
 }
 
 #leftBox {
     width: 25%;
-    background-image: url("./assets/dudleyPic.gif");
+    /*background-image: url("./assets/dudleyPic.gif");*/
     background-repeat: no-repeat;
     background-size: 250px 250px;
     background-position: left bottom;
@@ -25,7 +37,7 @@
 
 #rightBox {
     width: 25%;
-    background-image: url("./assets/qStance.gif");
+    /*background-image: url("./assets/qStance.gif");*/
     background-repeat: no-repeat;
     background-size: 250px 250px;
     background-position: right bottom;
@@ -70,17 +82,33 @@
     }
 }
 
+@keyframes playerWalkBackAni {
+
+    0% {
+        transform: translateX(80%);
+        background-image: 
+        url("https://www.justnopoint.com/zweifuss/colorswap.php?pcolorstring=DudleyPalette.bin&pcolornum=0&pname=dudley/dudley-walkb.gif");
+
+    }
+    100% {
+        transform: translateX(0);
+        background-image: 
+        url("https://www.justnopoint.com/zweifuss/colorswap.php?pcolorstring=DudleyPalette.bin&pcolornum=0&pname=dudley/dudley-walkb.gif");
+    }
+
+}
+
 @keyframes playerAttackAni {
     0% { 
         transform: translateX(100%);
         background-image: 
-            url("https://www.justnopoint.com/zweifuss/colorswap.php?pcolorstring=DudleyPalette.bin&pcolornum=0&pname=dudley/dudley-hp.gif");
-        }
+        url("https://www.justnopoint.com/zweifuss/colorswap.php?pcolorstring=DudleyPalette.bin&pcolornum=0&pname=dudley/dudley-hp.gif");
+    }
 
     100% {
         transform: translateX(99%);
         background-image: 
-            url("https://www.justnopoint.com/zweifuss/colorswap.php?pcolorstring=DudleyPalette.bin&pcolornum=0&pname=dudley/dudley-hp.gif");
+        url("https://www.justnopoint.com/zweifuss/colorswap.php?pcolorstring=DudleyPalette.bin&pcolornum=0&pname=dudley/dudley-hp.gif");
     }
 }
 
@@ -95,24 +123,48 @@
     position: absolute;
     bottom: 50;
     right: 50;
+    animation-name: enemyStandAni;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
 }
 
+@keyframes enemyStandAni {
+    0% {
+        background-image: url("./assets/qPic.gif");
+    }
+    100% {
+        background-image: url("./assets/qPic.gif");
+    }
+}
+
+
+@keyframes enemyHitAni {
+    0% {
+        background-image: url("./assets/qHit.gif");
+    }
+    100% {
+        background-image: url("./assets/qHit.gif");
+    }
+}
+
+
 #controlCenter {
-    border: 2px solid black;
     display: flex;
     justify-content: space-evenly;
-    height: 50px;
+    height: 40px;
     align-items: center;
 }
 
 .words {
     font-size: 30px;
     color: blue;
+    background-color: black;
 }
 
 .words2 {
     font-size: 30px;
     color: red;
+    background-color: black;
 }
 
 

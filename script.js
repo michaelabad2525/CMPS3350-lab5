@@ -61,13 +61,24 @@ function setPlayerAnimation(id) {
         playerCSS.style.animationName = "playerWalkAni";
 
         setTimeout(function() {
+            playerCSS.style.backgroundSize = "300px 300px";
+            enemyCSS.style.backgroundSize = "300px 300px";
             playerCSS.style.animationName = "playerAttackAni";
+            enemyCSS.style.animationName = "enemyHitAni";
         }, 4000);
 
 
         setTimeout(function() {
+            playerCSS.style.backgroundSize = "250px 250px";
+            enemyCSS.style.backgroundSize = "250px 250px";
+            playerCSS.style.animationName = "playerWalkBackAni";
+            enemyCSS.style.animationName = "enemyStandAni";
+        }, 4900);
+
+
+        setTimeout(function() {
             playerCSS.style.animationName = "playerStandAni";
-        }, 4860);
+        }, 8700);
 
     }
 }
