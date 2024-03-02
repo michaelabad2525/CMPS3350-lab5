@@ -13,6 +13,10 @@ let enemy = {
 //flags
 let Eattack = false;
 
+//easier access for css
+let playerCSS = document.getElementById('player');
+let enemyCSS = document.getElementById('enemy');
+
 //functions 
 function fate(min, max) {
     return min + Math.floor(Math.random() * (max - min + 1));
@@ -21,12 +25,14 @@ function fate(min, max) {
 function attack() {
     let random = fate(10, 15);
     Echoice();
-    if(!Eattack) 
+    if(!Eattack) { 
         enemy.health -= random - enemy.block;
-    else {
+        setPlayerAnimation(1);
+    } else {
         enemy.health -= random;
         random = fate(10, 15);
         player.health -= random;
+        setPlayerAnimation(1);
     }
     console.log(player.health)
     console.log(enemy.health)
@@ -48,3 +54,28 @@ function Echoice() {
     else
         Eattack = false;
 }
+
+function setPlayerAnimation(id) {
+    //id == 1 means that player is attacking 
+    if(id == 1) {
+        playerCSS.style.animationName = "playerWalkAni";
+
+        setTimeout(function() {
+            playerCSS.style.animationName = "playerAttackAni";
+        }, 4000);
+
+
+        setTimeout(function() {
+            playerCSS.style.animationName = "playerStandAni";
+        }, 4860);
+
+    }
+}
+
+
+
+
+
+
+
+
