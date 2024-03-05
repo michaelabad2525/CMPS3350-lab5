@@ -3,15 +3,16 @@
     <head>
         <title>Game Title</title>
         <link rel="stylesheet" href="./style.css">
+        <script src='./script.js'></script>
     </head>
 
-    <body>
+    <body onload="stats()">
         <div id="flexContainer">
             <div id="leftBox" class="box">
                 <h1 class="words">Dudley (player)</h1>
-                <h2 class="words">Health:</h2>
-                <h2 class="words">ATK:</h2>
-                <h2 class="words">Block:</h2>
+                <h2 class="words" id="pHP">Health:</h2>
+                <h2 class="words" id="pATK">ATK:</h2>
+                <h2 class="words" id="pBLK">Block:</h2>
             </div>
 
             <div id="middleBox" class="box">
@@ -21,16 +22,16 @@
 
             <div id="rightBox" class="box">
                 <h1 class="words2">Q (enemy)</h1>
-                <h2 class="words2">Health:</h2>
-                <h2 class="words2">ATK:</h2>
-                <h2 class="words2">Block:</h2>
+                <h2 class="words2" id="eHP">Health:</h2>
+                <h2 class="words2" id="eATK">ATK:</h2>
+                <h2 class="words2" id="eBLK">Block:</h2>
             </div>
         </div>
         <div id="controlCenter">
-            <button onclick="attack()">Attack</button>
-            <button onclick="block()">Block</button>
+            <button id="L" onclick="attack()">Attack</button>
+            <button id="M" onclick="refresh()"></button>
+            <button id="R" onclick="block()">Block</button>
 
         </div>
-        <script src='./script.js'></script>
     </body>
 </html>
