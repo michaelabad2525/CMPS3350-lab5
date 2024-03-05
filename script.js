@@ -1,12 +1,12 @@
 //stats
 let player = {
     health:     100,
-    //attack:   10-15,
+    attack:   "10-15",
     block:      5
 };
 let enemy = {
     health:     100,
-    //attack:   10-15,
+    attack:   "10-15",
     block:      5
 };
 
@@ -18,6 +18,17 @@ let playerCSS = document.getElementById('player');
 let enemyCSS = document.getElementById('enemy');
 
 //functions 
+function stats() {
+    document.getElementById("pHP").innerHTML = "Health: " + (player.health);
+    document.getElementById("pATK").innerHTML = "ATK: " + (player.attack);
+    document.getElementById("pBLK").innerHTML = "Block: " + (player.block);
+    document.getElementById("eHP").innerHTML = "Health: " + (enemy.health);
+    document.getElementById("eATK").innerHTML = "ATK: " + (enemy.attack);
+    document.getElementById("eBLK").innerHTML = "Block: " + (enemy.block);
+    document.getElementById("M").innerHTML = "";
+    document.getElementById("M").disabled = true;
+}
+
 function fate(min, max) {
     return min + Math.floor(Math.random() * (max - min + 1));
 }
@@ -25,7 +36,7 @@ function fate(min, max) {
 function attack() {
     let random = fate(10, 15);
     Echoice();
-    if(!Eattack) { 
+    if(!Eattack) {
         enemy.health -= random - enemy.block;
         setPlayerAnimation(2);
     } else {
@@ -34,8 +45,11 @@ function attack() {
         player.health -= random;
         setPlayerAnimation(2);
     }
-    console.log(player.health)
-    console.log(enemy.health)
+    stats();
+    if(player.health <= 0 || enemy.health <=0) {
+        document.getElementById("M").disabled = false;   
+        gameover();
+    }
 }
 
 function block() {
@@ -43,8 +57,11 @@ function block() {
     Echoice();
     if(Eattack)
         player.health -= random - player.block;
-    console.log(player.health)
-    console.log(enemy.health)
+    stats();
+    if(player.health <= 0 || enemy.health <= 0) {
+        document.getElementById("M").disabled = false;   
+        gameover();
+    }
 }
 
 function Echoice() {
@@ -103,10 +120,21 @@ function setPlayerAnimation(id) {
     }
 }
 
+function gameover() {
+    document.getElementById("L").innerHTML = "";
+    document.getElementById("L").disabled = true;
+    document.getElementById("R").innerHTML = "";
+    document.getElementById("R").disabled = true;
+    document.getElementById("M").innerHTML = "Try Again?";
+}
 
+function refresh() {
+    player.health = 100;
+    enemy.health = 100;
+    stats();
+    document.getElementById("L").innerHTML = "Attack";
+    document.getElementById("L").disabled = false;
+    document.getElementById("R").innerHTML = "Block";
+    document.getElementById("R").disabled = false;
 
-
-
-
-
-
+}
