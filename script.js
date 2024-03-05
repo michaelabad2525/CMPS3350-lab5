@@ -12,6 +12,7 @@ let enemy = {
 
 //flags
 let Eattack = false;
+let locked = false;
 
 //easier access for css
 let playerCSS = document.getElementById('player');
@@ -34,22 +35,32 @@ function fate(min, max) {
 }
 
 function attack() {
-    let random = fate(10, 15);
-    Echoice();
-    if(!Eattack) {
-        enemy.health -= random - enemy.block;
-        setPlayerAnimation(2);
-    } else {
-        enemy.health -= random;
-        random = fate(10, 15);
-        player.health -= random;
-        setPlayerAnimation(2);
+    if(!locked) {
+        locked = true;
+        setTimeout(unlock, 8800);
+        let random = fate(10, 15);
+        Echoice();
+        if(!Eattack) {
+            enemy.health -= random - enemy.block;
+            setPlayerAnimation(1);
+        } else {
+            //enemy.health -= random;
+            random = fate(10, 15);
+            player.health -= random;
+            setPlayerAnimation(2);
+        }
+        setTimeout(function() {
+            stats();
+            if(player.health <= 0 || enemy.health <=0) {
+                document.getElementById("M").disabled = false;   
+                gameover();
+            }
+        }, 4900);
     }
-    stats();
-    if(player.health <= 0 || enemy.health <=0) {
-        document.getElementById("M").disabled = false;   
-        gameover();
-    }
+}
+
+function unlock() {
+    locked = false;
 }
 
 function block() {
