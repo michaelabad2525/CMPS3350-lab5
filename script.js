@@ -27,12 +27,12 @@ function attack() {
     Echoice();
     if(!Eattack) { 
         enemy.health -= random - enemy.block;
-        setPlayerAnimation(1);
+        setPlayerAnimation(2);
     } else {
         enemy.health -= random;
         random = fate(10, 15);
         player.health -= random;
-        setPlayerAnimation(1);
+        setPlayerAnimation(2);
     }
     console.log(player.health)
     console.log(enemy.health)
@@ -80,6 +80,26 @@ function setPlayerAnimation(id) {
             playerCSS.style.animationName = "playerStandAni";
         }, 8700);
 
+    } else if (id == 2) {
+        enemyCSS.style.animationName = "enemyWalkAni";
+
+        setTimeout(function() {
+            playerCSS.style.backgroundSize = "300px 300px"; 
+            enemyCSS.style.backgroundSize = "300px 300px";
+            enemyCSS.style.animationName = "enemyAttackAni";
+            playerCSS.style.animationName = "playerHitAni";
+        }, 4000);
+
+        setTimeout(function() { 
+            playerCSS.style.backgroundSize = "250px 250px";
+            enemyCSS.style.backgroundSize = "250px 250px";
+            enemyCSS.style.animationName = "enemyWalkBackAni";
+            playerCSS.style.animationName = "playerStandAni";
+        }, 4900);
+
+        setTimeout(function() {
+            enemyCSS.style.animationName = "enemyStandAni";
+        }, 8700);
     }
 }
 
